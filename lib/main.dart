@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'dart:math' as Math; //べき乗のため追加
 void main() {
   runApp(MyApp());
 }
@@ -9,33 +9,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false, //demobanner非表示
+      title: 'ヘムわんの電卓',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primarySwatch: Colors.orange,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'ヘムわんの電卓'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
   final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,25 +34,426 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Container(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,//Textを左寄りに
           children: <Widget>[
-            Text(
-              'ヘムワン惨状！！何度目かの正直:',
+            Container(
+              height: 20,//べき乗表示のための領域、際社から表示するため
+              child:  Text('ここにべき乗'),
             ),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              'test',
+              style: TextStyle(
+                fontSize: 60,
+              ),
+            ),
+            Expanded(
+              child: Container(
+                child: Column(
+                  children: <Widget>[
+                    //1列目
+                    Expanded(//縦に目いっぱい広がる
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(//横にも目いっぱい広がる
+                            child: Container(),//空白のための領域
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  'CE',
+                                  style: TextStyle(
+                                    fontSize: 40,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  'C',
+                                  style: TextStyle(
+                                    fontSize: 40,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '×',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(//縦に目いっぱい広がる
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '1',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '2',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '3',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '÷',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(//縦に目いっぱい広がる
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '4',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '5',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '6',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '+',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(//縦に目いっぱい広がる
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '7',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '8',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '9',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '-',
+                                  style: TextStyle(
+                                    fontSize: 60,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(//縦に目いっぱい広がる
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '+/-',
+                                  style: TextStyle(
+                                    fontSize: 35,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '0',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '.',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(//横にも目いっぱい広がる
+                            child: SizedBox(//ボタンを領域一杯に広げる
+                              width: double.infinity,
+                              height: double.infinity,//infinity=最大,// 的な
+                              //double.infinityでちゃんと親要素で領域確保しないと、スマホ画面全体に広がっちゃったりする
+                              child: FloatingActionButton(
+                                onPressed: (){
+                                  //TODO処理書く
+                                },
+                                child: Text(
+                                  '=',
+                                  style: TextStyle(
+                                    fontSize: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
